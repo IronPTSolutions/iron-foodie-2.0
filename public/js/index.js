@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const button = event.currentTarget;
     const input = button.previousElementSibling;
     const icon = button.querySelector('i');
+
     if (input.type === 'text') {
       input.type = 'password';
       icon.classList.remove('fa-eye');

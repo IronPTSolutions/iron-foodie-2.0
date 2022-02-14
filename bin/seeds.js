@@ -16,7 +16,7 @@ mongoose.connection.once('open', () => {
         restaurants.forEach(restaurant => {
           new Restaurant({
             ...restaurant,
-            categories: ['vegan', 'healthy'],
+            categories: ['mediterranean', 'indian'],
             description: 'lorem sentence grater than 10 characters',
             capacity: Math.floor(Math.random() * 100 + 10),
           }).save()

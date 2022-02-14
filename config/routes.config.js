@@ -23,4 +23,5 @@ router.get('/login', auth.login)
 router.post('/register', auth.doRegister)
 router.get('/activate/:token', auth.activate)
 router.post('/login', auth.doLogin)
+
 module.exports = router

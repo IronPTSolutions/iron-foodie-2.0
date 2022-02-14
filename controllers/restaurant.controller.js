@@ -41,8 +41,7 @@ module.exports.doCreate = (req, res, next) => {
     image: req.body.image,
     description: req.body.description,
     categories: restaurantCategories,
-    capacity: req.body.capacity,
-    maxProductCost: req.body.maxProductCost
+    capacity: req.body.capacity
   });
 
   restaurant
@@ -79,11 +78,11 @@ module.exports.doEdit = (req, res, next) => {
     .then((restaurant) => res.redirect(`/restaurants/${restaurant.id}`))
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        req.body.id = req.params.id;
         res.status(400).render('restaurants/edit', {
           errors: error.errors,
           restaurant: req.body,
           categories: categories,
+          restaurantId: req.params.id
         });
       } else {
         next(error);

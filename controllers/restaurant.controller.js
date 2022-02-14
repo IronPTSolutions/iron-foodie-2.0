@@ -38,10 +38,10 @@ module.exports.doCreate = (req, res, next) => {
   const restaurant = new Restaurant({
     name: req.body.name,
     address: req.body.address,
-    image: req.body.image,
     description: req.body.description,
     categories: restaurantCategories,
     capacity: req.body.capacity,
+    image: req.body.image || undefined
   });
 
   restaurant

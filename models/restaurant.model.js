@@ -8,11 +8,11 @@ const restaurantSchema = new Schema({
   },
   address: {
     type: String,
-    required:[true, 'Address is required']
+    required: [true, 'Address is required']
   },
   image: {
     type: String,
-    default: 'https://media-cdn.tripadvisor.com/media/photo-s/17/75/3f/d1/restaurant-in-valkenswaard.jpg',
+    default: "https://res.cloudinary.com/glovoapp/w_700,h_360,c_fill,f_auto,q_auto/Stores/swhuhbdfcf4if9hhyt6j",
   },
   description: {
     type: String,

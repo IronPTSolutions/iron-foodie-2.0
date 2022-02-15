@@ -11,3 +11,13 @@ hbs.registerHelper('restaurantHasCategory', function (options) {
     return options.inverse(this);
   }
 })
+
+
+hbs.registerHelper('userLikedRestaurant', function (options) {
+  const { restaurant, likes } = options.hash;
+  if (restaurant && likes && likes.some(like => like.restaurant == restaurant.id)) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+})

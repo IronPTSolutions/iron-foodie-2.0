@@ -1,17 +1,25 @@
 const mongoose = require('mongoose');
 const Restaurant = require('../models/restaurant.model');
 const categories = Object.keys(require('../data/categories.json'));
+const Like = require('../models/like.model');
+require('../models/dish.model');
 
 module.exports.list = (req, res, next) => {
-  Restaurant.find()
-    .sort({ createdAt: 'desc' })
-    .limit(9)
-    .then((restaurants) => res.render('restaurants/list', { restaurants }))
+  Like.find({ user: req.user.id})
+    .then(likes=> {
+      return Restaurant.find()
+        .sort({ createdAt: 'desc' })
+        .limit(9)
+        .then((restaurants) => res.render('restaurants/list', { restaurants, likes }))
+    })
+
     .catch((error) => next(error));
 };
 
 module.exports.detail = (req, res, next) => {
+
   Restaurant.findById(req.params.id)
+    .populate('dishes')
     .then((restaurant) => {
       if (restaurant) {
         res.render('restaurants/detail', { restaurant });

@@ -16,7 +16,7 @@ const restaurantSchema = new Schema({
   },
   description: {
     type: String,
-    minlength: [10, 'Please tronco enter at least 10 characters ']
+    minlength: [10, 'Please tronco enter at least 10 characters']
   },
   categories: {
     type: [String],
@@ -24,9 +24,29 @@ const restaurantSchema = new Schema({
   },
   capacity: {
     type: Number,
-    required: [true, 'What about capaciy, does not mean anuthing for you?' ]
+    required: [true, 'What about capaciy, does not mean anuthing for you?']
   }
-}, { timestamps: true })
+}, {
+  timestamps: true,
+  toJSON: {
+    virtuals: true,
+    transform: (doc, ret) => {
+      ret.id = doc._id;
+      delete ret._id;
+      delete ret.__v;
+      delete ret.password;
+      delete ret.social;
+      return ret;
+    }
+  }
+ })
+
+restaurantSchema.virtual('dishes', {
+  ref: 'Dish',
+  localField: '_id',
+  foreignField: 'restaurant',
+  justOne: false,
+});
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema)
 module.exports = Restaurant

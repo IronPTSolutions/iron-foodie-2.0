@@ -28,3 +28,12 @@
   justify-content: center;
   color: white;
 }
+
+.icon-liked {
+  color: red;
+}
+
+.icon-events-none {
+  pointer-events: none;
+  opacity: 0.5;
+}

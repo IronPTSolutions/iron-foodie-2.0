@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>{{currentUser.name}}</h1>
+  <h2>{{currentUser.email}}</h1>
+  {{#each likes as |like|}}
+    {{like.restaurant.name}}
+  {{/each}}
+</div>

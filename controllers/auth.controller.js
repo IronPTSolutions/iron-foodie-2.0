@@ -74,7 +74,6 @@ module.exports.login = (req, res, next) => {
 }
 
 module.exports.doLogin = (req, res, next) => {
-  console.log('entro')
   login(req, res, next)
 }
 

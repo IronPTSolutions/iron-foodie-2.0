@@ -37,21 +37,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: () => {
       return Math.random().toString(36).substring(7) +
-      Math.random().toString(36).substring(7) +
-      Math.random().toString(36).substring(7) +
-      Math.random().toString(36).substring(7)
+        Math.random().toString(36).substring(7) +
+        Math.random().toString(36).substring(7) +
+        Math.random().toString(36).substring(7)
     }
   },
 });
 
-userSchema.virtual('likes',{
+userSchema.virtual('likes', {
   ref: 'Like',
   localField: '_id',
   foreignField: 'user',
   justOne: false,
 })
 
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function (next) {
   const user = this;
 
   if (user.isModified('password')) {
@@ -66,7 +66,7 @@ userSchema.pre('save', function(next) {
   }
 })
 
-userSchema.methods.checkPassword = function(password) {
+userSchema.methods.checkPassword = function (password) {
   return bcrypt.compare(password, this.password)
 }
 

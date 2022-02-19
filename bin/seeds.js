@@ -22,9 +22,9 @@ mongoose.connection.once('open', () => {
             capacity: Math.floor(Math.random() * 100 + 10),
           }).save()
             .then(restaurant => {
-              for (let i = 0; i < 10; i++) {
+              for (i = 0; i < 10; i++) {
                 const dish = new Dish({
-                  name: 'Dish name',
+                  name: 'Espagüettis :) ',
                   ingredients: [],
                   vegFriendly: Math.random() > 0.5,
                   cost: Math.random() * 20,

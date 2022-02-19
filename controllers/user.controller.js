@@ -2,8 +2,8 @@ const Like = require('../models/like.model')
 
 module.exports.profile = (req, res, next) => {
   Like.find({ user: req.user.id })
+    .populate('restaurant')
     .then((likes) => {
-      console.log(likes)
       res.render("users/profile", { likes })
     })
     .catch(next)

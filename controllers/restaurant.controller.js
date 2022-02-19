@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Restaurant = require('../models/restaurant.model');
 const categories = Object.keys(require('../data/categories.json'));
 const Like = require('../models/like.model');
+const Dish = require('../models/dish.model');
 
 module.exports.list = (req, res, next) => {
   Like.find({ user: req.user.id})
@@ -16,7 +17,6 @@ module.exports.list = (req, res, next) => {
 };
 
 module.exports.detail = (req, res, next) => {
-
   Restaurant.findById(req.params.id)
     .populate('dishes')
     .then((restaurant) => {

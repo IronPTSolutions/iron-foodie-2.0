@@ -41,12 +41,12 @@ const restaurantSchema = new Schema({
   }
  })
 
-restaurantSchema.virtual('dishes', {
-  ref: 'Dish',
-  localField: '_id',
-  foreignField: 'restaurant',
-  justOne: false,
-});
+ restaurantSchema.virtual('dishes', {
+   ref: "Dish",
+   localField: "_id",
+   foreignField: "restaurant",
+   justOne: false
+ })
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema)
 module.exports = Restaurant

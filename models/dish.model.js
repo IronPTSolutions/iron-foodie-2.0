@@ -5,19 +5,19 @@ const dishSchema= new Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: true
     },
     ingredients: {
       type: [String],
-      default: [],
+      required: true
     },
     vegFriendly: {
       type: Boolean,
-      default: false,
+      required: true
     },
     cost: {
       type: Number,
-      required: true,
+      required: true
     },
     image: {
       type: String,
@@ -26,11 +26,11 @@ const dishSchema= new Schema(
     },
     restaurant: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Restaurant',
+      ref: "Restaurant",
       required: true,
-    },
+    }
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 const Dish = mongoose.model('Dish', dishSchema);
